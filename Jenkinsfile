@@ -14,6 +14,11 @@ pipeline{
 	  	echo 'Start Testing..'
 	    }
     }
+    stage('Deploy') {
+	    steps {
+	  	echo 'Start Deploying..'
+	    }
+    }
   }
   post {
     success{
