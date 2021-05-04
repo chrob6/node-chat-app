@@ -21,17 +21,17 @@ pipeline{
     }
   }
   post {
+     failure{
+    	emailext attachLog: true,
+    	body: "Build no. ${env.BUILD_NUMBER}:${currentBuild.currentResult}, Job ${env.Job_NAME}",
+	to:'chrobak.mar6@gmail.com',
+	subject: "The pipeline failed in Jenkins"
+    }
     success{
     	emailext attachLog: true,
     	body: "Build no. ${env.BUILD_NUMBER}:${currentBuild.currentResult}, Job ${env.Job_NAME}",
 	to:'chrobak.mar6@gmail.com',
 	subject: "The pipeline successful in Jenkins"
-    }
-    failure{
-    	emailext attachLog: true,
-    	body: "Build no. ${env.BUILD_NUMBER}:${currentBuild.currentResult}, Job ${env.Job_NAME}",
-	to:'chrobak.mar6@gmail.com',
-	subject: "The pipeline failed in Jenkins"
     }
   }  
 }
