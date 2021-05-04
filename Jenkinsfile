@@ -3,9 +3,8 @@ pipeline{
   
   stages{
     stage('Build') {
-	    steps {
-		sh 'apt-get install npm -y'
-	  	sh '/usr/bin/npm install'
+	    steps {	
+	  	sh 'npm install'
 	  	echo 'Start Building..'
 	    }
     }
