@@ -43,5 +43,6 @@ pipeline{
 	to:'chrobam.mar6@gmail.com',
 	subject: "The pipeline successful in Jenkins"
     }
-  }  
+  }	  
+ }
 }
