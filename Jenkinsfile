@@ -4,17 +4,19 @@ pipeline{
   stages{
     stage('Build') {
 	    steps {	
+		echo 'Start Building..'
 		sh 'apt-get -y install git'
 		sh 'git pull origin master'
  		sh 'apt-get install npm -y'
 	  	sh 'npm install'
-	  	echo 'Start Building..'
+	  	echo 'Finish Building..'
 	    }
     }
     stage('Test') {
 	    steps {
+		echo 'Start Testing..'
 	  	sh 'npm run test'
-	  	echo 'Start Testing..'
+	  	echo 'Finish Testing..'
 	    }
     }
     stage('Deploy') {
