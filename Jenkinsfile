@@ -6,7 +6,7 @@ pipeline{
 	    steps {	
 		echo 'Start Building..'
 		sh 'git pull origin master'
-	  	sh 'npm install'
+	  	sh 'npm installl'
 	  	echo 'Finish Building..'
     	}
 	    post {
