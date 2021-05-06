@@ -8,6 +8,7 @@ pipeline{
 		sh 'git pull origin master'
 	  	sh 'npm install'
 	  	echo 'Finish Building..'
+    	}
 	    post {
      		failure{
     			emailext attachLog: true,
@@ -45,4 +46,3 @@ pipeline{
     }
   }	  
  }
-}
