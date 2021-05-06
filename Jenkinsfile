@@ -6,15 +6,21 @@ pipeline{
 	    steps {	
 		echo 'Start Building..'
 		sh 'git pull origin master'
-	  	sh 'npm installl'
+	  	sh 'npm install'
 	  	echo 'Finish Building..'
     	}
 	    post {
      		failure{
     			emailext attachLog: true,
-    			body: "Build no. ${env.BUILD_NUMBER}:${currentBuild.currentResult}, Job ${env.Job_NAME}",
+    			body: "The pipeline continue on Build stage",
 			to:'chrobam.mar6@gmail.com',
 			subject: "Build failed!"
+    		}
+		success{
+    			emailext attachLog: true,
+    			body: "The pipeline failed on Build stage",
+			to:'chrobam.mar6@gmail.com',
+			subject: "Build success!"
     		}
 	    }
     }
