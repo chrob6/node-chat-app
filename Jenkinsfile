@@ -5,9 +5,7 @@ pipeline{
     stage('Build') {
 	    steps {	
 		echo 'Start Building..'
-		sh 'apt-get -y install git'
 		sh 'git pull origin master'
- 		sh 'apt-get install npm -y'
 	  	sh 'npm install'
 	  	echo 'Finish Building..'
 	    }
