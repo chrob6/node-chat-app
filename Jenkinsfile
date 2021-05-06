@@ -8,6 +8,13 @@ pipeline{
 		sh 'git pull origin master'
 	  	sh 'npm install'
 	  	echo 'Finish Building..'
+	    post {
+     		failure{
+    			emailext attachLog: true,
+    			body: "Build no. ${env.BUILD_NUMBER}:${currentBuild.currentResult}, Job ${env.Job_NAME}",
+			to:'chrobam.mar6@gmail.com',
+			subject: "Build failed!"
+    		}
 	    }
     }
     stage('Test') {
