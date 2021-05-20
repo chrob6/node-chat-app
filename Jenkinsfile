@@ -30,6 +30,20 @@ pipeline{
 	  	sh 'npm run test'
 	  	echo 'Finish Testing..'
 	    }
+	     post {
+     		failure{
+    			emailext attachLog: true,
+    			body: "The pipeline continue on Test stage",
+			to:'chrobam.mar6@gmail.com',
+			subject: "Test failed!"
+    		}
+		success{
+    			emailext attachLog: true,
+    			body: "The pipeline failed on Test stage",
+			to:'chrobam.mar6@gmail.com',
+			subject: "Test success!"
+    		}
+	    }
     }
     stage('Deploy') {
 	    steps {
@@ -39,13 +53,13 @@ pipeline{
 	    post {
      		failure{
     			emailext attachLog: true,
-    			body: "The pipeline continue on Build stage",
+    			body: "The pipeline continue on Deploy stage",
 			to:'chrobam.mar6@gmail.com',
 			subject: "Deploy failed!"
     		}
 		success{
     			emailext attachLog: true,
-    			body: "The pipeline failed on Build stage",
+    			body: "The pipeline failed on Deploy stage",
 			to:'chrobam.mar6@gmail.com',
 			subject: "Deploy success!"
     		}
